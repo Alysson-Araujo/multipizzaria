@@ -6,7 +6,6 @@ class ListCategoryService {
       select: {
         id: true,
         name: true,
-        products: true,
       },
     });
 
