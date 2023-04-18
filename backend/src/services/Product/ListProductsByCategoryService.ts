@@ -1,19 +1,19 @@
-// import prismaClient from "../../prisma";
+import prismaClient from "../../prisma";
 
-// interface ListProductsByCategoryRequest {
-//   categoryId: string;
-// }
+interface ListProductsByCategoryRequest {
+  categoryId: string;
+}
 
-// class ListProductsByCategoryService {
-//   async execute({ categoryId }: ListProductsByCategoryRequest) {
-//     const list = await prismaClient.product.findMany({
-//       where: {
-//         categoryId,
-//       },
-//     });
+class ListProductsByCategoryService {
+  async execute({ categoryId }: ListProductsByCategoryRequest) {
+    const list = await prismaClient.product.findMany({
+      where: {
+        categoryId,
+      },
+    });
 
-//     return list;
-//   }
-// }
+    return list;
+  }
+}
 
-// export { ListProductsByCategoryService };
+export { ListProductsByCategoryService };
