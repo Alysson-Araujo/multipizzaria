@@ -10,6 +10,10 @@ import { ListCategoryController } from "./controllers/Category/ListCategoryContr
 import { CreateProductController } from "./controllers/Product/CreateProductController";
 // import { ListProductsByCategoryController } from "./controllers/Product/ListProductsByCategoryController";
 import uploadConfig from "./config/multer"
+import { ListByCategoryController } from "./controllers/Product/ListByCategoryController";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
+import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
+import { AddItemController } from "./controllers/order/AddItemController";
 
 const routes = Router();
 
@@ -26,7 +30,12 @@ routes.get("/category", isAuthenticated, new ListCategoryController().handle);
 
 // -- ROTAS PRODUCT --
 
-routes.post("/product", isAuthenticated, upload.single('file'), new CreateProductController().handle)
-// routes.get("/category/product", isAuthenticated, new ListProductsByCategoryController().handle)
+routes.post("/product", isAuthenticated, upload.single('file'), new CreateProductController().handle);
+routes.get("/category/product", isAuthenticated, new ListCategoryController().handle);
 
-export { routes };
+// -- ROTAS ORDER --
+
+routes.post("/order", isAuthenticated, new CreateOrderController().handle);
+routes.delete("/order", isAuthenticated, new RemoveOrderController().handle);
+routes.post("/order/add", isAuthenticated, new AddItemController().handle);
+export { routes }; 
