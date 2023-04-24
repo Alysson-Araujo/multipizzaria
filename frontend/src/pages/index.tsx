@@ -1,11 +1,23 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.scss'
-
+import Head from "next/head";
+import styles from "@/styles/home.module.scss";
+import logo from "../../public/logo.svg";
+import Image from "next/image";
+import {Input} from "../components/ui/input"
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h1>Sujeito Pizaa</h1>
-    </div>
-  )
+    <>
+      <Head>
+        <title>SujeitoPizza - Faça seu login</title>
+      </Head>
+      <div className={styles.containerCenter}>
+        <Image src={logo} alt="LOGO Sujeito Pizza" />
+      </div>
+      <div className={styles.login}>
+        <form action="post">
+          <Input placeholder="Digite seu email" type="text"/>
+          <Input placeholder="Digite sua senha" type="password"/>
+        </form>
+      </div>
+    </>
+  );
 }
